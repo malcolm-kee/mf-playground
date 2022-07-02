@@ -6,6 +6,7 @@ module.exports = {
   filename: 'remoteEntry.js',
   exposes: {
     './version': './src/components/version',
+    './exposes': './src/exposes',
   },
   remotes: {},
   shared: {

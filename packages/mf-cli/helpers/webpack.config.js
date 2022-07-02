@@ -37,13 +37,10 @@ function createWebpackConfig({ mode, mfConfig, publicPath }) {
       path: paths.outputPath,
       clean: true,
     },
-
     resolve: {
-      extensions: ['.jsx', '.js', '.json'],
+      extensions: ['.js', '.ts', '.tsx', '.json', '.jsx'],
     },
-
     target: 'web',
-
     module: {
       rules: [
         {
@@ -62,19 +59,21 @@ function createWebpackConfig({ mode, mfConfig, publicPath }) {
           test: /\.(js|jsx)$/,
           exclude: /node_modules/,
           use: {
-            loader: require.resolve('babel-loader'),
+            loader: require.resolve('esbuild-loader'),
             options: {
-              presets: [
-                [
-                  require.resolve('@babel/preset-react'),
-                  {
-                    runtime: 'automatic',
-                  },
-                ],
-                require.resolve('@babel/preset-env'),
-              ],
-              babelrc: false,
-              configFile: false,
+              loader: 'jsx',
+              target: 'es2015',
+            },
+          },
+        },
+        {
+          test: /\.(ts|tsx)$/,
+          exclude: /node_modules/,
+          use: {
+            loader: require.resolve('esbuild-loader'),
+            options: {
+              loader: 'tsx',
+              target: 'es2015',
             },
           },
         },

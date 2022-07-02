@@ -1,9 +1,10 @@
 import { Version as EdgeVersion } from 'edge/version';
+import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Version as RemoteVersion } from 'remote/version';
+import './app.css';
 import { ErrorBoundary } from './components/error-boundary';
 import { Version } from './components/version';
-import './app.css';
 
 ReactDOM.render(
   <div>

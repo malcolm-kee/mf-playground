@@ -1,4 +1,5 @@
 import * as ReactDOM from 'react-dom';
+import * as React from 'react';
 import { Version as RemoteVersion } from 'remote/version';
 import { Version } from './components/version';
 import './app.css';

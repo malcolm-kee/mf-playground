@@ -2,7 +2,11 @@ import * as React from 'react';
 import mfConfig from '../../module-federation.config';
 import pkgJson from '../../package.json';
 
-export const Version = ({ name, color }) => {
+export interface VersionProps {
+  name?: string;
+  color?: string;
+}
+export const Version = ({ name = 'noimport', color = 'red' }: VersionProps) => {
   const [isShown, setIsShown] = React.useState(false);
 
   return (
