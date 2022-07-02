@@ -5,7 +5,7 @@
     "build": "mf-cli build --publicPath=/stateless/",
     "build:dev": "mf-cli build --publicPath=/stateless/ --mode development",
     "start": "pnpm run dev",
-    "dev": "mf-cli dev --publichPath=/stateless/ --port=8087"
+    "dev": "mf-cli dev --publicPath=/stateless/ --port=8087"
   },
   "license": "MIT",
   "author": {

@@ -1,0 +1,13 @@
+{
+  "id": "default",
+  "remotes": [
+    {
+      "name": "remote",
+      "entryUrl": "/remote/remoteEntry.js"
+    },
+    {
+      "name": "edge",
+      "entryUrl": "/noimport/remoteEntry.js"
+    }
+  ]
+}

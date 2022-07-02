@@ -1,3 +1,4 @@
+const fs = require('node:fs');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -8,10 +9,16 @@ const { paths } = require('../helpers/paths');
 module.exports = function webpackConfig({ publicPath, mode }) {
   return createWebpackConfig({
     mode,
-    mfConfig: require(paths.mfConfigPath),
+    mfConfig: getMfConfig(),
     publicPath: process.env.VERCEL_URL || process.env.PUBLIC_PATH || publicPath || '/',
   });
 };
+
+function getMfConfig() {
+  if (fs.existsSync(paths.mfConfigPath)) {
+    return require(paths.mfConfigPath);
+  }
+}
 
 /**
  *
@@ -77,12 +84,12 @@ function createWebpackConfig({ mode, mfConfig, publicPath }) {
     devtool: 'source-map',
 
     plugins: [
-      new ModuleFederationPlugin(mfConfig),
+      mfConfig && new ModuleFederationPlugin(mfConfig),
       new HtmlWebPackPlugin({
         template: paths.appIndexHtml,
       }),
       new MiniCssExtractPlugin(),
-    ],
+    ].filter(Boolean),
     optimization: {
       minimize: isProd,
       minimizer: [

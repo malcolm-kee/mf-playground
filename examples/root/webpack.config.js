@@ -50,6 +50,8 @@ module.exports = async (env, { mode }) => {
         '/host-broken': 'http://localhost:8084',
         '/host-fixed': 'http://localhost:8085',
         '/host-noimport': 'http://localhost:8089',
+        '/host-dynamic': 'http://localhost:8090',
+        '/.netlify': 'http://localhost:9999',
       },
     },
 
