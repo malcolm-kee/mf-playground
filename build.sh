@@ -16,3 +16,8 @@ mv examples/host-fixed-example/dist dist/host-fixed;
 mv examples/host-noimport-example/dist dist/host-noimport;
 mv examples/host-simple-example/dist dist/host-simple;
 mv examples/host-dynamic-example/dist dist/host-dynamic;
+
+
+echo "
+/host-dynamic/*     /host-dynamic/index.html    200
+" > dist/_redirects
