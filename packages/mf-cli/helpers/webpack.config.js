@@ -96,5 +96,9 @@ function createWebpackConfig({ mode, mfConfig, publicPath }) {
         new CssMinimizerPlugin(),
       ],
     },
+    infrastructureLogging: {
+      level: isProd ? 'info' : 'none',
+    },
+    stats: isProd ? undefined : 'none',
   };
 }

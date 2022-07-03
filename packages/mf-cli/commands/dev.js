@@ -5,7 +5,7 @@ const WebpackDevServer = require('webpack-dev-server');
 const { paths } = require('../helpers/paths');
 const webpackConfig = require('../helpers/webpack.config');
 
-exports.dev = function dev({ publicPath, port = 3000 }) {
+exports.dev = function dev({ publicPath, port = 3000, open = false }) {
   const compiler = webpack(
     webpackConfig({
       mode: 'development',
@@ -33,11 +33,20 @@ exports.dev = function dev({ publicPath, port = 3000 }) {
             watch: true,
           }
         : undefined,
+      client: {
+        logging: 'none',
+      },
+      proxy: fs.existsSync(paths.appDevProxy) ? require(paths.appDevProxy) : undefined,
     },
     compiler
   );
 
-  return devServer.start().then(() => console.log(`Dev server on http://localhost:${port}`));
+  return devServer.start().then(() => {
+    console.log(`Dev server on http://localhost:${port}`);
+    if (open) {
+      require('../helpers/open-browser').openBrowser(`http://localhost:${port}`);
+    }
+  });
 };
 
 /**

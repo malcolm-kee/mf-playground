@@ -5,7 +5,8 @@
     "build": "mf-cli build --publicPath=/noimport/",
     "build:dev": "mf-cli build --publicPath=/noimport/ --mode development",
     "start": "pnpm run dev",
-    "dev": "mf-cli dev --publicPath=/noimport/ --port=8088"
+    "dev": "mf-cli dev --publicPath=/noimport/ --port=8088",
+    "help": "mf-cli --help"
   },
   "license": "MIT",
   "author": {

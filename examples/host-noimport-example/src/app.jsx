@@ -1,8 +1,9 @@
 import { Version as EdgeVersion } from 'edge/version';
+import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Version as RemoteVersion } from 'remote/version';
-import { Version } from './components/version';
 import './app.css';
+import { Version } from './components/version';
 
 ReactDOM.render(
   <div>
