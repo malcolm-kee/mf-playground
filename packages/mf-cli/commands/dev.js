@@ -21,6 +21,11 @@ exports.dev = function dev({ publicPath, port = 3000 }) {
         'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
         'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
       },
+      historyApiFallback: publicPath
+        ? {
+            index: publicPath,
+          }
+        : false,
       static: fs.existsSync(paths.appPublic)
         ? {
             directory: paths.appPublic,

@@ -1,0 +1,9 @@
+{
+  "id": "default",
+  "remotes": [
+    {
+      "name": "remote",
+      "entryUrl": "/remote/remoteEntry.js"
+    }
+  ]
+}
