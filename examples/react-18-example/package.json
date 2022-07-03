@@ -1,11 +1,11 @@
 {
-  "name": "noimport-example",
+  "name": "react-18-example",
   "private": true,
   "scripts": {
-    "build": "mf-cli build --publicPath=/noimport/",
-    "build:dev": "mf-cli build --publicPath=/noimport/ --mode development",
+    "build": "mf-cli build --publicPath=/react18/",
+    "build:dev": "mf-cli build --publicPath=/react18/ --mode=development",
     "start": "pnpm run dev",
-    "dev": "mf-cli dev --publicPath=/noimport/ --port=8088"
+    "dev": "mf-cli dev --publicPath=/react18/ --port=8091"
   },
   "license": "MIT",
   "author": {
@@ -13,7 +13,6 @@
     "email": "malcolm.keeweesiong@gmail.com"
   },
   "devDependencies": {
-    "@types/react": "~18.0.14",
     "mf-cli": "workspace:*"
   },
   "dependencies": {

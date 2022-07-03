@@ -10,6 +10,7 @@ mv examples/noimport-example/dist dist/noimport;
 mv examples/remote-example/dist dist/remote;
 mv examples/remote-singleton-example/dist dist/singleton;
 mv examples/stateless-example/dist dist/stateless;
+mv examples/react-18-example/dist dist/react18;
 mv examples/host-broken-example/dist dist/host-broken;
 mv examples/host-conflict-example/dist dist/host-conflict;
 mv examples/host-fixed-example/dist dist/host-fixed;

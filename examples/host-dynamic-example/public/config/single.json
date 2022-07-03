@@ -1,9 +1,10 @@
 {
-  "id": "default",
+  "id": "single",
   "remotes": [
     {
       "name": "remote",
-      "entryUrl": "/remote/remoteEntry.js"
+      "entryUrl": "/remote/remoteEntry.js",
+      "exposedModule": "./exposes"
     }
   ]
 }

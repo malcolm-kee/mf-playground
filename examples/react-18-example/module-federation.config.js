@@ -1,10 +1,13 @@
 const pkgJson = require('./package.json');
+
 const dependencies = pkgJson.dependencies;
 
 module.exports = {
-  name: 'dynamicHost',
+  name: 'react18',
   filename: 'remoteEntry.js',
-  exposes: {},
+  exposes: {
+    './exposes': './src/exposes',
+  },
   remotes: {},
   shared: {
     ...dependencies,

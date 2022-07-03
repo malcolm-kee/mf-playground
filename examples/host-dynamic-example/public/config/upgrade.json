@@ -1,5 +1,5 @@
 {
-  "id": "default",
+  "id": "upgrade",
   "remotes": [
     {
       "name": "remote",
@@ -9,6 +9,11 @@
     {
       "name": "edge",
       "entryUrl": "/noimport/remoteEntry.js",
+      "exposedModule": "./exposes"
+    },
+    {
+      "name": "react18",
+      "entryUrl": "/react18/remoteEntry.js",
       "exposedModule": "./exposes"
     }
   ]

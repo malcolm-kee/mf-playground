@@ -2,17 +2,19 @@ export const createAsyncCache = <Result, Param>(fn: (param: Param) => Promise<Re
   const resultCache = new Map<Param, Result>();
   const requestCache = new Map<Param, Promise<Result>>();
 
-  function invoke(param: Param): Promise<Result> {
+  function invoke(param: Param, onSuccess: (result: Result) => void) {
     const cache = resultCache.get(param);
 
     if (cache) {
-      return Promise.resolve(cache);
+      onSuccess(cache);
+      return;
     }
 
     const prevRequest = requestCache.get(param);
 
     if (prevRequest) {
-      return prevRequest;
+      prevRequest.then(onSuccess);
+      return;
     }
 
     const request = fn(param);
@@ -20,11 +22,10 @@ export const createAsyncCache = <Result, Param>(fn: (param: Param) => Promise<Re
     requestCache.set(param, request);
 
     request.then((result) => {
+      onSuccess(result);
       resultCache.set(param, result);
       requestCache.delete(param);
     });
-
-    return request;
   }
 
   return {

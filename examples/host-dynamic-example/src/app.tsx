@@ -1,12 +1,17 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { BrowserRouter, Link, Route, Routes, useSearchParams } from 'react-router-dom';
+import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
+import { publicPath } from './env';
 import { useRemoteExposes } from './use-remotes';
 import { useSessionStorage } from './use-session-storage';
 
 const App = () => {
-  const [configType, setConfigType] = useSessionStorage('configType', 'default');
-
+  // declare a state to simulate changing the config
+  // in actual implementation the backend API service should have separate API to change it
+  const [configType, setConfigType] = useSessionStorage<'default' | 'single' | 'upgrade'>(
+    'configType',
+    'default'
+  );
   const remotes = useRemoteExposes(configType);
 
   return (
@@ -24,6 +29,13 @@ const App = () => {
           >
             Switch to {configType === 'default' ? 'single' : 'default'}
           </button>
+          {configType === 'upgrade' ? (
+            <span>Loaded React 18 App</span>
+          ) : (
+            <button onClick={() => setConfigType('upgrade')} type="button">
+              Load React 18 App
+            </button>
+          )}
         </div>
         <nav>
           <ul style={{ display: 'flex', gap: '1rem', listStyle: 'none', margin: 0 }}>
@@ -77,14 +89,10 @@ const App = () => {
   );
 };
 
-/**
- *
- * @param {string} str
- */
-const removeTrailingSlash = (str) => (str.endsWith('/') ? str.slice(0, -1) : str);
+const removeTrailingSlash = (str: string) => (str.endsWith('/') ? str.slice(0, -1) : str);
 
 ReactDOM.render(
-  <BrowserRouter basename={removeTrailingSlash(__webpack_public_path__)}>
+  <BrowserRouter basename={removeTrailingSlash(publicPath)}>
     <App />
   </BrowserRouter>,
   document.getElementById('app')
